@@ -29,11 +29,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/hello").hasRole("admin")
                 .anyRequest()
                 .authenticated()
-                .and().formLogin().disable();
-
-        http.csrf().ignoringAntMatchers("/h2-console/**");
-
-        http.headers().frameOptions().sameOrigin();
+                .and().formLogin()
+                .and().csrf().disable();
     }
 
     @Override
